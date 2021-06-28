@@ -2,6 +2,7 @@ package edu.cnm.deepdive;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 
 class FactorialsTest {
 
@@ -23,14 +24,12 @@ class FactorialsTest {
     }
   }
   @Test
-  void computeRecursive_exceptional(){
-    try {
+  void computeRecursive_exceptional() {
+  assertThrows(IllegalArgumentException.class, new Executable() {
+    @Override
+    public void execute() throws Throwable {
       Factorials.computeRecursive(-1);
-
     }
-    catch (IllegalArgumentException e){
-      // Do nothing; this is expected.
-    }
+  });
   }
-
 }
